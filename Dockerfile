@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:experimental
 FROM quay.io/unstructured-io/base-images:wolfi-base-latest
 
+USER 0
+
 ARG PYTHON_VERSION="3.11"
 ARG PIPELINE_PACKAGE=general
 
