@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:experimental
 FROM quay.io/unstructured-io/base-images:wolfi-base-latest
 
-USER 0
+USER 1000
 
 ARG PYTHON_VERSION="3.11"
 ARG PIPELINE_PACKAGE=general
@@ -27,8 +27,6 @@ COPY logger_config.yaml logger_config.yaml
 COPY prepline_${PIPELINE_PACKAGE}/ prepline_${PIPELINE_PACKAGE}/
 COPY exploration-notebooks exploration-notebooks
 COPY scripts/app-start.sh scripts/app-start.sh
-
-USER 1000
 
 ENTRYPOINT ["scripts/app-start.sh"]
 # Expose a default port of 8000. Note: The EXPOSE instruction does not actually publish the port,
