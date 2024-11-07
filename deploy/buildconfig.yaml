@@ -1,0 +1,27 @@
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: unstructured-api
+spec:
+  runPolicy: Serial
+  triggers:
+    - type: ImageChange
+      imageChange:
+        from:
+          kind: ImageStreamTag
+          name: unstructured-wolfi-base:latest
+  source:
+    git:
+      uri: https://github.com/redhat-na-ssa/unstructured-api
+      ref: fix/openshift-build
+  strategy:
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+      from:
+        kind: ImageStreamTag
+        name: unstructured-wolfi-base:latest
+  output:
+    to:
+      kind: ImageStreamTag
+      name: unstructured-api:latest
