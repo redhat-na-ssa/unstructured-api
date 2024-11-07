@@ -22,6 +22,9 @@ RUN ${PIP} install --no-cache -r requirements-base.txt
 RUN ${PYTHON} -c "from unstructured.nlp.tokenize import download_nltk_packages; download_nltk_packages()" && \
   ${PYTHON} -c "from unstructured.partition.model_init import initialize; initialize()"
 
+# Cache table-transformer-structure-recognition model
+RUN ${PYTHON} -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='microsoft/table-transformer-structure-recognition', filename='config.json');"
+
 COPY CHANGELOG.md CHANGELOG.md
 COPY logger_config.yaml logger_config.yaml
 COPY prepline_${PIPELINE_PACKAGE}/ prepline_${PIPELINE_PACKAGE}/
