@@ -1,5 +1,12 @@
 namespace: unstructured-api
+
+commonLabels:
+  app: unstructured-api
+
 resources:
   - namespace.yaml
   - imagestreams.yaml
   - buildconfig.yaml
+  - rbac.yaml
+  - deployment.yaml
+  - service.yaml

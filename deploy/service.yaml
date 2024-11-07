@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unstructured-api
+spec:
+  selector:
+    app: unstructured-api
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: api
